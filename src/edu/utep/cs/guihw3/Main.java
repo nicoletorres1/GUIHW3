@@ -99,7 +99,7 @@ public class Main extends JFrame {
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        JButton refreshButton = new JButton("Refresh");
+        JButton refreshButton = new JButton("Refresh"); //creates new button
         refreshButton.setFocusPainted(false);
         refreshButton.addActionListener(this::refreshButtonClicked);
         panel.add(refreshButton);
