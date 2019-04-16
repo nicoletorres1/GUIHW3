@@ -81,7 +81,7 @@ public class ItemView extends JPanel {
         int height = 25;
         int width = 25;
         super.paintComponent(g);
-        g.drawImage(getImage("URL.jpg"), 20, 5, height,width,null);
+        g.drawImage(getImage("URL.png"), 20, 5, height,width,null);
         int x = 20, y = 50;
         g.drawString("Name: " + item.getItemName(), x, y);
         y += 20;

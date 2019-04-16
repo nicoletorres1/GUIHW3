@@ -33,12 +33,12 @@ public class Main extends JFrame {
         super("Price Watcher");
         setSize(dim);
         configureUI();
-        //setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        //setResizable(false);
+        setResizable(false);
         showMessage("Welcome!");
-
+        pack();
     }
 
     /** Callback to be invoked when the refresh button is clicked.
@@ -95,7 +95,8 @@ public class Main extends JFrame {
     private JPanel makeControlPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         JToolBar buttonBar = new JToolBar();
-        JButton butRefresh = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\refresh3.png"));
+        JButton butRefresh = new JButton();
+        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/refresh3.png")));
         buttonBar.add(butRefresh);
         JButton butAdd = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\add.jpg"));
         buttonBar.add(butAdd);
