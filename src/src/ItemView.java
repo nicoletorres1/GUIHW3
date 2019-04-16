@@ -1,10 +1,6 @@
 package src;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -12,13 +8,15 @@ import java.net.URL;
 
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 /** A special panel to display the detail of an item. */
 
 @SuppressWarnings("serial")
-public class ItemView extends JPanel {
+public class ItemView extends JPanel implements ListCellRenderer<Item> {
+
+
 
     private String itemName = "LED Monitor";
     private String URL = "http://www.bestbuy.com/site/samsun-ue90-series-28-led-4k-uhd-moniotr-black/5484022.p?skuId=5484022";
@@ -35,6 +33,28 @@ public class ItemView extends JPanel {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    @Override
+    public Component getListCellRendererComponent(JList<? extends Item> list, Item value,
+                                                  int index, boolean isSelected, boolean cellHasFocus) {
+        this.item = value;
+        Color background;
+        Color foreground;
+
+        if(isSelected){
+            background = Color.YELLOW;
+            foreground = Color. BLACK;
+        }else{
+            background = Color.WHITE;
+            foreground = Color. BLACK;
+
+        };
+
+        setBackground(background);
+        setForeground(foreground);
+
+        return this;
     }
 
     /** Interface to notify a click on the view page icon. */
@@ -118,5 +138,7 @@ public class ItemView extends JPanel {
         }
         return null;
     }
+
+
 }
 

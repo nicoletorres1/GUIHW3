@@ -14,11 +14,22 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 
+    private WatchList watchList = new WatchList();
+    private String itemName = "LED Monitor";
+    private String URL = "http://www.bestbuy.com/site/samsun-ue90-series-28-led-4k-uhd-moniotr-black/5484022.p?skuId=5484022";
+    private double maxPrice = 369.99;
+    private double minPrice = 61.67;
+    private double itemChange;
+    private String itemDate = "08/25/2018";
+
+
     /** Default dimension of the dialog. */
     private final static Dimension DEFAULT_SIZE = new Dimension(400, 300);
 
     /** Special panel to display the watched item. */
     private ItemView itemView;
+
+    private DefaultListModel defaultListModel;
 
     /** Message bar to display various messages. */
     private JLabel msgBar = new JLabel(" ");
@@ -33,6 +44,7 @@ public class Main extends JFrame {
         super("Price Watcher");
         setSize(dim);
         configureUI();
+
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -75,17 +87,30 @@ public class Main extends JFrame {
     /** Configure UI. */
     private void configureUI() {
         setLayout(new BorderLayout());
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+
+        defaultListModel = createListModel();
+        JList createJList = new JList<>(defaultListModel);
+        createJList.setCellRenderer(new ItemView());
+        JScrollPane creatScroll = new JScrollPane(createJList);
         JPanel control = makeControlPanel();
         control.setBorder(BorderFactory.createEmptyBorder(10,16,0,16));
         add(control, BorderLayout.NORTH);
         JPanel board = new JPanel();
+        board.add(creatScroll);
         board.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createEmptyBorder(10,16,0,16),
                 BorderFactory.createLineBorder(Color.GRAY)));
         board.setLayout(new GridLayout(1,1));
         itemView = new ItemView();
         itemView.setClickListener(this::viewPageClicked);
-        board.add(itemView);
+        //board.add(itemView);
         add(board, BorderLayout.CENTER);
         msgBar.setBorder(BorderFactory.createEmptyBorder(10,16,10,0));
         add(msgBar, BorderLayout.SOUTH);
@@ -160,8 +185,31 @@ public class Main extends JFrame {
         }).start();
     }
 
+
+    //method to populate watchList
+    public Item createItem(String itemName, String URL, Double maxPrice, Double minPrice, String itemDate){
+        Item testItem = new Item(itemName, URL, maxPrice,
+        minPrice, itemDate);
+
+        return testItem;
+    }
+
+    /**
+     * @return list
+     */
+    public DefaultListModel createListModel(){
+        DefaultListModel list = new DefaultListModel<>();
+        watchList.getHolder().forEach((iter) -> {
+            list.addElement(iter);
+        });
+        return list;
+    }
+
+
+
     public static void main(String[] args) {
         new Main();
+
     }
 
 }
