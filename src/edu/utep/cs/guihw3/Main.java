@@ -4,12 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URI;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * A dialog for tracking the price of an item.
@@ -38,12 +33,12 @@ public class Main extends JFrame {
         super("Price Watcher");
         setSize(dim);
         configureUI();
-        //setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        //setResizable(false);
+        setResizable(false);
         showMessage("Welcome!");
-
+        pack();
     }
 
     /** Callback to be invoked when the refresh button is clicked.
@@ -99,10 +94,31 @@ public class Main extends JFrame {
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        JButton refreshButton = new JButton("Refresh"); //creates new button
-        refreshButton.setFocusPainted(false);
-        refreshButton.addActionListener(this::refreshButtonClicked);
-        panel.add(refreshButton);
+        JToolBar buttonBar = new JToolBar();
+        JButton butRefresh = new JButton();
+        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("cs/utep/edu/image/refresh3.png")));
+        buttonBar.add(butRefresh);
+        JButton butAdd = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\add.jpg"));
+        buttonBar.add(butAdd);
+        JButton butSearch = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\search-icon1.png"));
+        buttonBar.add(butSearch);
+        JButton butSelFirst = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\firstItem.png"));
+        buttonBar.add(butSelFirst);
+        JButton butSelLast = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\lastItem.png"));
+        buttonBar.add(butSelLast);
+        buttonBar.addSeparator();
+        JButton butCheckSingle = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\blueRefresh.png"));
+        buttonBar.add(butCheckSingle);
+        JButton butViewPage = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\URL.png"));
+        buttonBar.add(butViewPage);
+        JButton butEdit = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\edit.png"));
+        buttonBar.add(butEdit);
+        JButton butDeleteSel = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\delete.png"));
+        buttonBar.add(butDeleteSel);
+        buttonBar.addSeparator();
+        JButton butInfo = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\questionMark.png"));
+        buttonBar.add(butInfo);
+        panel.add(buttonBar, BorderLayout.NORTH);
         return panel;
     }
 
