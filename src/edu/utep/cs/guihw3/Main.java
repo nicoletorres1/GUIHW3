@@ -4,12 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URI;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * A dialog for tracking the price of an item.
@@ -99,10 +94,11 @@ public class Main extends JFrame {
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
-        JButton refreshButton = new JButton("Refresh");
-        refreshButton.setFocusPainted(false);
-        refreshButton.addActionListener(this::refreshButtonClicked);
-        panel.add(refreshButton);
+        JToolBar buttonBar = new JToolBar();
+        JButton refresh = new JButton();
+        buttonBar.add(new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\refresh3.png")));
+        buttonBar.add(new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\click.png")));
+        panel.add(buttonBar);
         return panel;
     }
 
