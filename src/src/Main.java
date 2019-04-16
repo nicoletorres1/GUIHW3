@@ -99,8 +99,46 @@ public class Main extends JFrame {
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
         buttonBar.add(butRefresh);
+
+        JButton butAdd = new JButton();
+        butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
+        buttonBar.add(butAdd);
+
+        JButton butSearch = new JButton();
+        butSearch.setIcon(new ImageIcon("src/image/search-icon1.png"));
+        buttonBar.add(butSearch);
+
+        JButton butSelFirst = new JButton();
+        butSelFirst.setIcon(new ImageIcon("src/image/firstItem.png"));
+        buttonBar.add(butSelFirst);
+
+        JButton butSelLast = new JButton();
+        butSelLast.setIcon(new ImageIcon("src/image/lastItem.png"));
+        buttonBar.add(butSelLast);
+        buttonBar.addSeparator();
+
+        JButton butCheckSingle = new JButton();
+        butCheckSingle.setIcon(new ImageIcon("src/image/blueRefresh.png"));
+        buttonBar.add(butCheckSingle);
+
+        JButton butViewPage = new JButton();
+        butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
+        buttonBar.add(butViewPage);
+
+        JButton butEdit = new JButton();
+        butEdit.setIcon(new ImageIcon("src/image/edit.png"));
+        buttonBar.add(butEdit);
+
+        JButton butDeleteSel = new JButton();
+        butDeleteSel.setIcon(new ImageIcon(("src/image/delete.png")));
+        buttonBar.add(butDeleteSel);
+        buttonBar.addSeparator();
+
+        JButton butInfo = new JButton();
+        butInfo.setIcon(new ImageIcon(("src/image/questionMark.png")));
+        buttonBar.add(butInfo);
         panel.add(buttonBar, BorderLayout.NORTH);
-        
+
         return panel;
     }
 
