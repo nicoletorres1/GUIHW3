@@ -1,4 +1,4 @@
-package edu.utep.cs.guihw3;
+package src;
 /*
  * Author: Nicole Torres
  * Date: 04/04/19

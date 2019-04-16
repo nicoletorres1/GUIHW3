@@ -1,4 +1,4 @@
-package edu.utep.cs.guihw3;
+package guihw3;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package edu.utep.cs.guihw3;
+package src;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -93,32 +93,14 @@ public class Main extends JFrame {
 
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+        JPanel panel = new JPanel(new BorderLayout());
         JToolBar buttonBar = new JToolBar();
+
         JButton butRefresh = new JButton();
-        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("cs/utep/edu/image/refresh3.png")));
+        butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
         buttonBar.add(butRefresh);
-        JButton butAdd = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\add.jpg"));
-        buttonBar.add(butAdd);
-        JButton butSearch = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\search-icon1.png"));
-        buttonBar.add(butSearch);
-        JButton butSelFirst = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\firstItem.png"));
-        buttonBar.add(butSelFirst);
-        JButton butSelLast = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\lastItem.png"));
-        buttonBar.add(butSelLast);
-        buttonBar.addSeparator();
-        JButton butCheckSingle = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\blueRefresh.png"));
-        buttonBar.add(butCheckSingle);
-        JButton butViewPage = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\URL.png"));
-        buttonBar.add(butViewPage);
-        JButton butEdit = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\edit.png"));
-        buttonBar.add(butEdit);
-        JButton butDeleteSel = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\delete.png"));
-        buttonBar.add(butDeleteSel);
-        buttonBar.addSeparator();
-        JButton butInfo = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\questionMark.png"));
-        buttonBar.add(butInfo);
         panel.add(buttonBar, BorderLayout.NORTH);
+        
         return panel;
     }
 

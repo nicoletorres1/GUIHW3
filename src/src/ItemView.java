@@ -1,4 +1,4 @@
-package edu.utep.cs.guihw3;
+package src;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,14 +7,12 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URL;
 
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-import java.net.URI;
 
 
 /** A special panel to display the detail of an item. */
