@@ -96,7 +96,7 @@ public class Main extends JFrame {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         JToolBar buttonBar = new JToolBar();
         JButton butRefresh = new JButton();
-        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/refresh3.png")));
+        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("cs/utep/edu/image/refresh3.png")));
         buttonBar.add(butRefresh);
         JButton butAdd = new JButton(new ImageIcon("C:\\Users\\scott\\IdeaProjects\\GUIHW3\\src\\edu\\utep\\cs\\image\\add.jpg"));
         buttonBar.add(butAdd);
