@@ -176,13 +176,13 @@ public class Main extends JFrame {
         dropBar.add(app);
         dropBar.add(item);
         dropBar.add(sort);
-
+        //app dropdown
         JMenuItem about = new JMenuItem("About", new ImageIcon("src/image/questionMarkDrop.png"));
         app.add(about);
         app.addSeparator();
         JMenuItem dropExit = new JMenuItem("Exit");
         app.add(dropExit);
-
+        //item drop down
         JMenuItem dropCheckPrice = new JMenuItem("Check Price", new ImageIcon("src/image/refresh1.png"));
         item.add(dropCheckPrice);
         JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
@@ -195,8 +195,8 @@ public class Main extends JFrame {
         JMenuItem dropSearchLast = new JMenuItem("Last Item", new ImageIcon("src/image/lastItem1.png"));
         item.add(dropSearchLast);
         item.addSeparator();
-
-        item.add(select);// copy name,url,item
+        //select drop down
+        item.add(select);
         JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon("src/image/refresh1.png"));
         select.add(dropSelPrice);
         JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon("src/image/URL1.png"));
@@ -213,21 +213,29 @@ public class Main extends JFrame {
         JMenuItem dropSelCopyItem = new JMenuItem("Copy Item");
         select.add(dropSelCopyItem);
         //radio buttons
+        ButtonGroup radioGroup = new ButtonGroup();
         JRadioButtonMenuItem dropOldestAdded = new JRadioButtonMenuItem("Oldest Added");
+        radioGroup.add(dropOldestAdded);
         sort.add(dropOldestAdded);
         JRadioButtonMenuItem dropNewestAdded = new JRadioButtonMenuItem("Newest Added");
+        radioGroup.add(dropNewestAdded);
         sort.add(dropNewestAdded);
         sort.addSeparator();
         JRadioButtonMenuItem dropNameAsc = new JRadioButtonMenuItem("Name Ascending");
+        radioGroup.add(dropNameAsc);
         sort.add(dropNameAsc);
         JRadioButtonMenuItem dropNameDesc = new JRadioButtonMenuItem("Name Descending");
+        radioGroup.add(dropNameDesc);
         sort.add(dropNameDesc);
         sort.addSeparator();
         JRadioButtonMenuItem dropPriceChange = new JRadioButtonMenuItem("Price Change (%)");
+        radioGroup.add(dropPriceChange);
         sort.add(dropPriceChange);
         JRadioButtonMenuItem dropPriceHigh = new JRadioButtonMenuItem("Price High ($)");
+        radioGroup.add(dropPriceHigh);
         sort.add(dropPriceHigh);
         JRadioButtonMenuItem dropPriceLow = new JRadioButtonMenuItem("Price Low ($)");
+        radioGroup.add(dropPriceLow);
         sort.add(dropPriceLow);
 
         panel.add(dropBar, BorderLayout.NORTH);
