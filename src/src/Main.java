@@ -44,7 +44,6 @@ public class Main extends JFrame {
         super("Price Watcher");
         setSize(dim);
         configureUI();
-
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
