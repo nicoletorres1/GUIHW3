@@ -212,7 +212,7 @@ public class Main extends JFrame {
         select.add(dropSelCopyUrl);
         JMenuItem dropSelCopyItem = new JMenuItem("Copy Item");
         select.add(dropSelCopyItem);
-
+        //radio buttons
         JRadioButtonMenuItem dropOldestAdded = new JRadioButtonMenuItem("Oldest Added");
         sort.add(dropOldestAdded);
         JRadioButtonMenuItem dropNewestAdded = new JRadioButtonMenuItem("Newest Added");
