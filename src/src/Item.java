@@ -22,6 +22,9 @@ public class Item {
     private String itemDate;// = "08/25/2018";
     private double previousPrice;
 
+    public Item(){
+    }
+
     public Item(String itemName, String URL, double maxPrice, double minPrice, String itemDate){
         this.itemName = itemName;
         this.URL = URL;
