@@ -2,7 +2,9 @@ package src;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URI;
+import java.util.ListIterator;
 
 import javax.swing.*;
 
@@ -47,7 +49,7 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
-        setResizable(false);
+        //setResizable(false);
         showMessage("Welcome!");
         pack();
     }
@@ -117,16 +119,13 @@ public class Main extends JFrame {
 
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
-        ButHandler butHandler = new ButHandler();
         JPanel panel = new JPanel(new BorderLayout());
         JToolBar buttonBar = new JToolBar();
 
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
         buttonBar.add(butRefresh);
-        butRefresh.addActionListener(event -> {
-            butHandler.refreshAll();
-        });
+
 
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
@@ -182,6 +181,7 @@ public class Main extends JFrame {
         //app dropdown
         JMenuItem about = new JMenuItem("About", new ImageIcon("src/image/questionMarkDrop.png"));
         app.add(about);
+        about.addActionListener(new AboutListener());
         app.addSeparator();
         JMenuItem dropExit = new JMenuItem("Exit");
         app.add(dropExit);
@@ -288,12 +288,23 @@ public class Main extends JFrame {
 
     }
 
-    private static class ButHandler {
+    /*private class ButHandler extends Main {
+        //DefaultListModel refList = new DefaultListModel<>();
 
         public void refreshAll(){
+            /*watchList.getHolder().forEach((iter) -> {
+                refList.contains(maxPrice);
+                refList.get(refList.indexOf(iter));
+            });
+        }
 
+    }*/
+
+    private class AboutListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "      " +
+                    "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
 }
 
