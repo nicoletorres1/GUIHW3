@@ -2,6 +2,7 @@ package src;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URI;
 
 import javax.swing.*;
@@ -161,7 +162,9 @@ public class Main extends JFrame {
         JButton butInfo = new JButton();
         butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
         buttonBar.add(butInfo);
+        butInfo.addActionListener(new butInfoListener());
         panel.add(buttonBar, BorderLayout.CENTER);
+
 
         JMenuBar dropBar = new JMenuBar();
         JMenuBar dropNest = new JMenuBar();
@@ -286,5 +289,13 @@ public class Main extends JFrame {
 
     }
 
+    private class butInfoListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e ){
+            JOptionPane.showMessageDialog(null, "Authors \n " +
+                    "Nicole Torres \n Scott Honaker", "About", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+    }
 }
 
