@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
 import java.util.ListIterator;
-
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
@@ -18,13 +17,14 @@ import javax.swing.event.ChangeListener;
 public class Main extends JFrame {
 
     private WatchList watchList = new WatchList();
+    private JList createJList;
     private String itemName = "LED Monitor";
     private String URL = "http://www.bestbuy.com/site/samsun-ue90-series-28-led-4k-uhd-moniotr-black/5484022.p?skuId=5484022";
     private double maxPrice = 369.99;
     private double minPrice = 61.67;
     private double itemChange;
     private String itemDate = "08/25/2018";
-    private JList createJList;
+
 
 
     /** Default dimension of the dialog. */
@@ -131,10 +131,12 @@ public class Main extends JFrame {
 
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
+        butAdd.addActionListener(new butAddListener());
         buttonBar.add(butAdd);
 
         JButton butSearch = new JButton();
         butSearch.setIcon(new ImageIcon("src/image/search-icon1.png"));
+        butSearch.addActionListener(new butSearchListener());
         buttonBar.add(butSearch);
 
         JButton butSelFirst = new JButton();
@@ -154,13 +156,16 @@ public class Main extends JFrame {
         butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
         buttonBar.add(butViewPage);
 
+        //NEED TO DO ADD first
         JButton butEdit = new JButton();
         butEdit.setIcon(new ImageIcon("src/image/edit.png"));
+        butEdit.addActionListener(new butEditListener());
         buttonBar.add(butEdit);
 
         JButton butDeleteSel = new JButton();
         butDeleteSel.setIcon(new ImageIcon("src/image/delete.png"));
         buttonBar.add(butDeleteSel);
+        butDeleteSel.addActionListener(new butDeleteSelListener());
         buttonBar.addSeparator();
 
         JButton butInfo = new JButton();
@@ -300,6 +305,7 @@ public class Main extends JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
    // question mark button
     private class butInfoListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -309,6 +315,39 @@ public class Main extends JFrame {
         }
     }
 
+
+    private class butDeleteSelListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            if(createJList.getSelectedIndex() > -1) {
+                defaultListModel.remove(createJList.getSelectedIndex());
+                repaint();
+            }
+        }
+    }
+
+    private class butEditListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+
+
+        }
+    }
+
+
+
+    private class butAddListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+
+        }
+    }
+
+
+    private class butSearchListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+
+
+        }
+    }
 
 
 
