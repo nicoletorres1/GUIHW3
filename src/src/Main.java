@@ -149,6 +149,7 @@ public class Main extends JFrame {
         JButton butCheckSingle = new JButton();
         butCheckSingle.setIcon(new ImageIcon("src/image/blueRefresh.png"));
         buttonBar.add(butCheckSingle);
+        butCheckSingle.addActionListener(new butCheckSingleListener());
 
         JButton butViewPage = new JButton();
         butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
@@ -191,6 +192,7 @@ public class Main extends JFrame {
         item.add(dropCheckPrice);
         JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
         item.add(dropAddItem);
+        dropAddItem.addActionListener(new dropAddItemListener());
         item.addSeparator();
         JMenuItem dropSearch = new JMenuItem("Search", new ImageIcon("src/image/Search-icon2.png"));
         item.add(dropSearch);
@@ -241,11 +243,7 @@ public class Main extends JFrame {
         JRadioButtonMenuItem dropPriceLow = new JRadioButtonMenuItem("Price Low ($)");
         radioGroup.add(dropPriceLow);
         sort.add(dropPriceLow);
-        if(createJList.getSelectedIndex() > -1) {
-            Item test;
-            test = (Item) defaultListModel.get(createJList.getSelectedIndex());
-            test.getItemName();
-        }
+
         panel.add(dropBar, BorderLayout.NORTH);
         return panel;
     }
@@ -310,8 +308,24 @@ public class Main extends JFrame {
     }
 
 
+    private class dropAddItemListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            Item addItem = new Item();
 
+        }
+    }
 
-
+    private class butCheckSingleListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            if(createJList.getSelectedIndex() > -1) {
+                Item refreshItem;
+                refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
+                refreshItem.setPreviousPrice(refreshItem.getItemPrice());
+                refreshItem.setItemPrice(refreshItem.getRandomPrice());
+                refreshItem.setItemChange();
+                repaint();
+            }
+        }
+    }
 }
 
