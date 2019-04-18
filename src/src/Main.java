@@ -117,12 +117,16 @@ public class Main extends JFrame {
 
     /** Create a control panel consisting of a refresh button. */
     private JPanel makeControlPanel() {
+        ButHandler butHandler = new ButHandler();
         JPanel panel = new JPanel(new BorderLayout());
         JToolBar buttonBar = new JToolBar();
 
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
         buttonBar.add(butRefresh);
+        butRefresh.addActionListener(event -> {
+            butHandler.refreshAll();
+        });
 
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
@@ -279,11 +283,16 @@ public class Main extends JFrame {
         return list;
     }
 
-
-
     public static void main(String[] args) {
         new Main();
 
+    }
+
+    private static class ButHandler {
+
+        public void refreshAll(){
+
+        }
     }
 
 }
