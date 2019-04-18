@@ -288,18 +288,6 @@ public class Main extends JFrame {
 
     }
 
-    /*private class ButHandler extends Main {
-        //DefaultListModel refList = new DefaultListModel<>();
-
-        public void refreshAll(){
-            /*watchList.getHolder().forEach((iter) -> {
-                refList.contains(maxPrice);
-                refList.get(refList.indexOf(iter));
-            });
-        }
-
-    }*/
-
     private class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "      " +
