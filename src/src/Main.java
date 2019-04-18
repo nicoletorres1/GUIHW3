@@ -24,6 +24,7 @@ public class Main extends JFrame {
     private double minPrice = 61.67;
     private double itemChange;
     private String itemDate = "08/25/2018";
+    private JList createJList;
 
 
     /** Default dimension of the dialog. */
@@ -98,7 +99,7 @@ public class Main extends JFrame {
         watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 
         defaultListModel = createListModel();
-        JList createJList = new JList<>(defaultListModel);
+        createJList = new JList<>(defaultListModel);
         createJList.setCellRenderer(new ItemView());
         JScrollPane creatScroll = new JScrollPane(createJList);
         JPanel control = makeControlPanel();
@@ -165,17 +166,15 @@ public class Main extends JFrame {
         JButton butInfo = new JButton();
         butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
         buttonBar.add(butInfo);
-        butInfo.addChangeListener(new butInfoListener());
+        butInfo.addActionListener(new butInfoListener());
         panel.add(buttonBar, BorderLayout.CENTER);
 
         JMenuBar dropBar = new JMenuBar();
-        JMenuBar dropNest = new JMenuBar();
 
         JMenu app = new JMenu("App");
         JMenu item = new JMenu("Item");
         JMenu sort = new JMenu("Sort");
         JMenu select = new JMenu("Selected");
-
 
         dropBar.add(app);
         dropBar.add(item);
@@ -242,7 +241,11 @@ public class Main extends JFrame {
         JRadioButtonMenuItem dropPriceLow = new JRadioButtonMenuItem("Price Low ($)");
         radioGroup.add(dropPriceLow);
         sort.add(dropPriceLow);
-
+        if(createJList.getSelectedIndex() > -1) {
+            Item test;
+            test = (Item) defaultListModel.get(createJList.getSelectedIndex());
+            test.getItemName();
+        }
         panel.add(dropBar, BorderLayout.NORTH);
         return panel;
     }
@@ -293,7 +296,8 @@ public class Main extends JFrame {
     private class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "      " +
-                    "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About", JOptionPane.INFORMATION_MESSAGE);
+                    "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
    // question mark button
