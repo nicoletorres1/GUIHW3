@@ -296,7 +296,7 @@ public class Main extends JFrame {
                     "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+   // question mark button
     private class butInfoListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             JOptionPane.showMessageDialog(null, "      " +
