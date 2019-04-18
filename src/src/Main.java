@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.ListIterator;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 
 /**
  * A dialog for tracking the price of an item.
@@ -164,6 +165,7 @@ public class Main extends JFrame {
         JButton butInfo = new JButton();
         butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
         buttonBar.add(butInfo);
+        butInfo.addChangeListener(new butInfoListener());
         panel.add(buttonBar, BorderLayout.CENTER);
 
         JMenuBar dropBar = new JMenuBar();
@@ -294,5 +296,18 @@ public class Main extends JFrame {
                     "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About", JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
+    private class butInfoListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(null, "      " +
+                "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+
+
+
+
 }
 
