@@ -1,11 +1,14 @@
 package src;
 
+import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
 import java.util.ListIterator;
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -308,11 +311,55 @@ public class Main extends JFrame {
         }
     }
 
-
+    //add new item
     private class dropAddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
-            Item addItem = new Item();
+            JOptionPane testOption = new JOptionPane();
 
+            JTextField nameField = new JTextField(10);
+            JTextField urlField = new JTextField(10);
+            JTextField priceField = new JTextField(10);
+            JTextField dateField = new JTextField(10);
+
+            JPanel namePanel = new JPanel();
+            JPanel URLPanel = new JPanel();
+            JPanel pricePanel = new JPanel();
+            JPanel datePanel = new JPanel();
+            JPanel outer = new JPanel();
+
+            outer.setLayout(new BoxLayout(outer, BoxLayout.Y_AXIS));
+
+            namePanel.add(new JLabel("Name:\t"));
+            namePanel.add(nameField);
+            namePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            URLPanel.add(new JLabel("URL:\t"), urlField);
+            URLPanel.add(urlField);
+            URLPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            pricePanel.add(new JLabel("Price:\t"));
+            pricePanel.add(priceField);
+            pricePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            datePanel.add(new JLabel("Date Added:\t"));
+            datePanel.add(dateField);
+            datePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            outer.add(namePanel);
+            outer.add(URLPanel);
+            outer.add(pricePanel);
+            outer.add(datePanel);
+
+            testOption.showConfirmDialog(null, outer, "Add Item", JOptionPane.OK_CANCEL_OPTION);
+
+            String name = nameField.getText();
+            String URL = urlField.getText();
+            double price =  Double.parseDouble(priceField.getText());
+            String date = dateField.getText();
+
+            Item addItem = new Item(name, URL, price, 0, date);
+
+            defaultListModel.addElement(addItem);
         }
     }
 
