@@ -310,7 +310,7 @@ public class Main extends JFrame {
         }
     }
 
-
+    //add new item
     private class dropAddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             JOptionPane testOption = new JOptionPane();
