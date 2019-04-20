@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
 import java.util.ListIterator;
-
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
@@ -139,6 +138,7 @@ public class Main extends JFrame {
 
         JButton butSelFirst = new JButton();
         butSelFirst.setIcon(new ImageIcon("src/image/firstItem.png"));
+        butSelFirst.addActionListener(new butSelFirstListener());
         buttonBar.add(butSelFirst);
 
         JButton butSelLast = new JButton();
@@ -298,6 +298,7 @@ public class Main extends JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }
+
    // question mark button
     private class butInfoListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -327,5 +328,19 @@ public class Main extends JFrame {
             }
         }
     }
+
+
+    private class butSelFirstListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e){
+
+
+        }
+
+    }
+
+
+
+
 }
 
