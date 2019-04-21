@@ -134,6 +134,7 @@ public class Main extends JFrame {
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
         buttonBar.add(butAdd);
+        butAdd.addActionListener(new AddItemListener());
 
         JButton butSearch = new JButton();
         butSearch.setIcon(new ImageIcon("src/image/search-icon1.png"));
@@ -152,7 +153,7 @@ public class Main extends JFrame {
         JButton butCheckSingle = new JButton();
         butCheckSingle.setIcon(new ImageIcon("src/image/blueRefresh.png"));
         buttonBar.add(butCheckSingle);
-        butCheckSingle.addActionListener(new butCheckSingleListener());
+        butCheckSingle.addActionListener(new CheckSingleListener());
 
         JButton butViewPage = new JButton();
         butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
@@ -170,7 +171,7 @@ public class Main extends JFrame {
         JButton butInfo = new JButton();
         butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
         buttonBar.add(butInfo);
-        butInfo.addActionListener(new butInfoListener());
+        butInfo.addActionListener(new AboutListener());
         panel.add(buttonBar, BorderLayout.CENTER);
 
         JMenuBar dropBar = new JMenuBar();
@@ -195,7 +196,7 @@ public class Main extends JFrame {
         item.add(dropCheckPrice);
         JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
         item.add(dropAddItem);
-        dropAddItem.addActionListener(new dropAddItemListener());
+        dropAddItem.addActionListener(new AddItemListener());
         item.addSeparator();
         JMenuItem dropSearch = new JMenuItem("Search", new ImageIcon("src/image/Search-icon2.png"));
         item.add(dropSearch);
@@ -206,8 +207,9 @@ public class Main extends JFrame {
         item.addSeparator();
         //select drop down
         item.add(select);
-        JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon("src/image/refresh1.png"));
+        JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon("src/image/blueRefresh1.png"));
         select.add(dropSelPrice);
+        dropSelPrice.addActionListener(new CheckSingleListener());
         JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon("src/image/URL1.png"));
         select.add(dropSelView);
         JMenuItem dropSelEdit = new JMenuItem("Edit", new ImageIcon("src/image/edit1.png"));
@@ -293,7 +295,7 @@ public class Main extends JFrame {
         new Main();
 
     }
-
+    //Get program info
     private class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "      " +
@@ -302,17 +304,8 @@ public class Main extends JFrame {
         }
     }
 
-   // question mark button
-    private class butInfoListener implements ActionListener {
-        public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(null, "      " +
-                "          Authors\n           Nicole Torres\n          Scott Honaker\n", "About",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-
     //add new item
-    private class dropAddItemListener implements ActionListener {
+    private class AddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             JOptionPane testOption = new JOptionPane();
 
@@ -337,7 +330,7 @@ public class Main extends JFrame {
             URLPanel.add(urlField);
             URLPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            pricePanel.add(new JLabel("Price:\t"));
+            pricePanel.add(new JLabel("Price(Numbers only):\t"));
             pricePanel.add(priceField);
             pricePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -350,20 +343,21 @@ public class Main extends JFrame {
             outer.add(pricePanel);
             outer.add(datePanel);
 
-            testOption.showConfirmDialog(null, outer, "Add Item", JOptionPane.OK_CANCEL_OPTION);
+            int button = testOption.showConfirmDialog(null, outer, "Add Item", JOptionPane.OK_CANCEL_OPTION);
 
             String name = nameField.getText();
             String URL = urlField.getText();
             double price =  Double.parseDouble(priceField.getText());
             String date = dateField.getText();
+            if(button == 0) {
+                Item addItem = new Item(name, URL, price, 0, date);
 
-            Item addItem = new Item(name, URL, price, 0, date);
-
-            defaultListModel.addElement(addItem);
+                defaultListModel.addElement(addItem);
+            }
         }
     }
-
-    private class butCheckSingleListener implements ActionListener {
+    //update price on selected item
+    private class CheckSingleListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             if(createJList.getSelectedIndex() > -1) {
                 Item refreshItem;
