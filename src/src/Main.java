@@ -406,21 +406,6 @@ public class Main extends JFrame {
         }
     }
 
-    private class viewPageListener implements ActionListener {
-        public void actionPerformed(ActionEvent e){
-            if(createJList.getSelectedIndex() > -1) {
-                Item refreshItem;
-                refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
-                try{
-                    Desktop d = Desktop.getDesktop();
-                    d.browse(new URI(refreshItem.getURL()));
-                }catch(Exception E){
-                    E.printStackTrace();
-                }
 
-                showMessage("View clicked!");
-            }
-        }
-    }
 }
 
