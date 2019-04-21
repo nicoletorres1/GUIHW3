@@ -132,41 +132,49 @@ public class Main extends JFrame {
 
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
+        butRefresh.setToolTipText("Refresh All");
         buttonBar.add(butRefresh);
         butRefresh.addActionListener(new refreshListener());
 
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
+        butAdd.setToolTipText("Add a new item");
         buttonBar.add(butAdd);
         butAdd.addActionListener(new AddItemListener());
 
         JButton butSearch = new JButton();
         butSearch.setIcon(new ImageIcon("src/image/search-icon1.png"));
+        butSearch.setToolTipText("Search for an item");
         buttonBar.add(butSearch);
 
         JButton butSelFirst = new JButton();
         butSelFirst.setIcon(new ImageIcon("src/image/firstItem.png"));
+        butSelFirst.setToolTipText("Select first item");
         butSelFirst.addActionListener(new butSelFirstListener());
         buttonBar.add(butSelFirst);
 
         JButton butSelLast = new JButton();
         butSelLast.setIcon(new ImageIcon("src/image/lastItem.png"));
+        butSelLast.setToolTipText("Select last item");
         buttonBar.add(butSelLast);
         butSelLast.addActionListener(new ButSelLastListener());
         buttonBar.addSeparator();
 
         JButton butCheckSingle = new JButton();
         butCheckSingle.setIcon(new ImageIcon("src/image/blueRefresh.png"));
+        butCheckSingle.setToolTipText("Update price for selected item");
         buttonBar.add(butCheckSingle);
         butCheckSingle.addActionListener(new CheckSingleListener());
 
         JButton butViewPage = new JButton();
         butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
+        butViewPage.setToolTipText("View URL of selected item");
         buttonBar.add(butViewPage);
         butViewPage.addActionListener(new viewPageListener());
 
         JButton butEdit = new JButton();
         butEdit.setIcon(new ImageIcon("src/image/edit.png"));
+        butEdit.setToolTipText("Edit selected item");
         buttonBar.add(butEdit);
 
         JButton butDeleteSel = new JButton();
