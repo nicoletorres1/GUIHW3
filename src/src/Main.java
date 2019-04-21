@@ -129,7 +129,7 @@ public class Main extends JFrame {
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
         buttonBar.add(butRefresh);
-
+        butRefresh.addActionListener(new refreshListener());
 
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
@@ -148,6 +148,7 @@ public class Main extends JFrame {
         JButton butSelLast = new JButton();
         butSelLast.setIcon(new ImageIcon("src/image/lastItem.png"));
         buttonBar.add(butSelLast);
+        butSelLast.addActionListener(new ButSelLastListener());
         buttonBar.addSeparator();
 
         JButton butCheckSingle = new JButton();
@@ -158,6 +159,7 @@ public class Main extends JFrame {
         JButton butViewPage = new JButton();
         butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
         buttonBar.add(butViewPage);
+        butViewPage.addActionListener(new viewPageListener());
 
         JButton butEdit = new JButton();
         butEdit.setIcon(new ImageIcon("src/image/edit.png"));
@@ -194,6 +196,7 @@ public class Main extends JFrame {
         //item drop down
         JMenuItem dropCheckPrice = new JMenuItem("Check Price", new ImageIcon("src/image/refresh1.png"));
         item.add(dropCheckPrice);
+        dropCheckPrice.addActionListener(new refreshListener());
         JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
         item.add(dropAddItem);
         dropAddItem.addActionListener(new AddItemListener());
@@ -372,16 +375,52 @@ public class Main extends JFrame {
 
 
     private class butSelFirstListener implements ActionListener {
-
-        public void actionPerformed(ActionEvent e){
-
-
+        public void actionPerformed(ActionEvent e) {
+            if (defaultListModel.getSize() > -1) {
+                createJList.setSelectedIndex(0);
+            }
         }
-
     }
 
+    private class ButSelLastListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (defaultListModel.getSize() > -1) {
+                createJList.setSelectedIndex(defaultListModel.getSize() - 1);
+            }
+        }
+    }
 
+    private class refreshListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            if(defaultListModel.getSize() > -1) {
+                for(int i = 0; i < defaultListModel.getSize(); i++){
+                    Item refreshItem;
+                    createJList.setSelectedIndex(i);
+                    refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
+                    refreshItem.setPreviousPrice(refreshItem.getItemPrice());
+                    refreshItem.setItemPrice(refreshItem.getRandomPrice());
+                    refreshItem.setItemChange();
+                    repaint();
+                }
+            }
+        }
+    }
 
+    private class viewPageListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            if(createJList.getSelectedIndex() > -1) {
+                Item refreshItem;
+                refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
+                try{
+                    Desktop d = Desktop.getDesktop();
+                    d.browse(new URI(refreshItem.getURL()));
+                }catch(Exception E){
+                    E.printStackTrace();
+                }
 
+                showMessage("View clicked!");
+            }
+        }
+    }
 }
 
