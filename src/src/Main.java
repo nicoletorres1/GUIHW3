@@ -121,7 +121,10 @@ public class Main extends JFrame {
         add(msgBar, BorderLayout.SOUTH);
     }
 
-    /** Create a control panel consisting of a refresh button. */
+    /**
+     *
+      * @return
+     */
     private JPanel makeControlPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         JToolBar buttonBar = new JToolBar();
@@ -168,6 +171,7 @@ public class Main extends JFrame {
         JButton butDeleteSel = new JButton();
         butDeleteSel.setIcon(new ImageIcon("src/image/delete.png"));
         buttonBar.add(butDeleteSel);
+        butDeleteSel.addActionListener(new deleteSelListener());
         buttonBar.addSeparator();
 
         JButton butInfo = new JButton();
@@ -205,8 +209,10 @@ public class Main extends JFrame {
         item.add(dropSearch);
         JMenuItem dropSearchFirst = new JMenuItem("First Item", new ImageIcon("src/image/firstItem1.png"));
         item.add(dropSearchFirst);
+        dropSearchFirst.addActionListener(new butSelFirstListener());
         JMenuItem dropSearchLast = new JMenuItem("Last Item", new ImageIcon("src/image/lastItem1.png"));
         item.add(dropSearchLast);
+        butSelLast.addActionListener(new ButSelLastListener());
         item.addSeparator();
         //select drop down
         item.add(select);
@@ -215,6 +221,7 @@ public class Main extends JFrame {
         dropSelPrice.addActionListener(new CheckSingleListener());
         JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon("src/image/URL1.png"));
         select.add(dropSelView);
+        dropSelView.addActionListener(new viewPageListener());
         JMenuItem dropSelEdit = new JMenuItem("Edit", new ImageIcon("src/image/edit1.png"));
         select.add(dropSelEdit);
         JMenuItem dropSelRemove = new JMenuItem("Remove", new ImageIcon("src/image/delete1.png"));
@@ -419,6 +426,15 @@ public class Main extends JFrame {
                 }
 
                 showMessage("View clicked!");
+            }
+        }
+    }
+
+    private class deleteSelListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (createJList.getSelectedIndex() > -1) {
+                defaultListModel.remove(createJList.getSelectedIndex());
+                repaint();
             }
         }
     }
