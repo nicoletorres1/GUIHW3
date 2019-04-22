@@ -179,12 +179,14 @@ public class Main extends JFrame {
 
         JButton butDeleteSel = new JButton();
         butDeleteSel.setIcon(new ImageIcon("src/image/delete.png"));
+        butDeleteSel.setToolTipText("Delete selected item");
         buttonBar.add(butDeleteSel);
         butDeleteSel.addActionListener(new deleteSelListener());
         buttonBar.addSeparator();
 
         JButton butInfo = new JButton();
         butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
+        butInfo.setToolTipText("Information for selected item");
         buttonBar.add(butInfo);
         butInfo.addActionListener(new AboutListener());
         panel.add(buttonBar, BorderLayout.CENTER);
