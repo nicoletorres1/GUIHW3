@@ -176,6 +176,7 @@ public class Main extends JFrame {
         butEdit.setIcon(new ImageIcon("src/image/edit.png"));
         butEdit.setToolTipText("Edit selected item");
         buttonBar.add(butEdit);
+        butEdit.addActionListener(new editListener());
 
         JButton butDeleteSel = new JButton();
         butDeleteSel.setIcon(new ImageIcon("src/image/delete.png"));
@@ -438,7 +439,6 @@ public class Main extends JFrame {
         }
     }
 
-
     private class butSelFirstListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (defaultListModel.getSize() > -1) {
@@ -493,6 +493,69 @@ public class Main extends JFrame {
             if (createJList.getSelectedIndex() > -1) {
                 defaultListModel.remove(createJList.getSelectedIndex());
                 repaint();
+            }
+        }
+    }
+
+    private class editListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if(createJList.getSelectedIndex() > -1) {
+                Item editItem;
+                editItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
+
+                JOptionPane testOption = new JOptionPane();
+
+                String name = editItem.getItemName();
+                String URL = editItem.getURL();
+                String price = String.valueOf(editItem.getItemPrice());
+                String date = editItem.getItemDate();
+                JTextField nameField = new JTextField(name, 10);
+                JTextField urlField = new JTextField(URL,10);
+                JTextField priceField = new JTextField(price,10);
+                JTextField dateField = new JTextField(date,10);
+
+                JPanel namePanel = new JPanel();
+                JPanel URLPanel = new JPanel();
+                JPanel pricePanel = new JPanel();
+                JPanel datePanel = new JPanel();
+                JPanel outer = new JPanel();
+
+                outer.setLayout(new BoxLayout(outer, BoxLayout.Y_AXIS));
+
+                namePanel.add(new JLabel("Name:\t"));
+                namePanel.add(nameField);
+                namePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                URLPanel.add(new JLabel("URL:\t"), urlField);
+                URLPanel.add(urlField);
+                URLPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                pricePanel.add(new JLabel("Price(Numbers only):\t"));
+                pricePanel.add(priceField);
+                pricePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                datePanel.add(new JLabel("Date Added:\t"));
+                datePanel.add(dateField);
+                datePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                outer.add(namePanel);
+                outer.add(URLPanel);
+                outer.add(pricePanel);
+                outer.add(datePanel);
+
+                int button = testOption.showConfirmDialog(null, outer, "Add Item", JOptionPane.OK_CANCEL_OPTION);
+
+                name = nameField.getText();
+                URL = urlField.getText();
+                double price1 = Double.parseDouble(priceField.getText());
+                date = dateField.getText();
+                if (button == 0) {
+                    editItem.setItemName(name);
+                    editItem.setURL(URL);
+                    editItem.setItemPrice(price1);
+                    editItem.setItemDate(date);
+                    repaint();
+                }
             }
         }
     }
