@@ -35,7 +35,9 @@ public class Main extends JFrame {
 
     /** Special panel to display the watched item. */
     private ItemView itemView;
-
+    /**
+     *
+     */
     private DefaultListModel defaultListModel;
 
     /** Message bar to display various messages. */
@@ -210,37 +212,44 @@ public class Main extends JFrame {
         JMenuItem about = new JMenuItem("About", new ImageIcon("src/image/questionMarkDrop.png"));
         about.setMnemonic('a');
         about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, Event.CTRL_MASK));
+        about.setToolTipText("Information for selected item");
         app.add(about);
         about.addActionListener(new AboutListener());
         app.addSeparator();
         JMenuItem dropExit = new JMenuItem("Exit");
         dropExit.setMnemonic('e');
         dropExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, Event.CTRL_MASK));
+        dropExit.setToolTipText("Exit the program");
         app.add(dropExit);
         //item drop down
         JMenuItem dropCheckPrice = new JMenuItem("Check Price", new ImageIcon("src/image/refresh1.png"));
         dropCheckPrice.setMnemonic('c');
         dropCheckPrice.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK));
+        dropCheckPrice.setToolTipText("Refresh All");
         item.add(dropCheckPrice);
         dropCheckPrice.addActionListener(new refreshListener());
         JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
         dropAddItem.setMnemonic('i');
         dropAddItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, Event.CTRL_MASK));
+        dropAddItem.setToolTipText("Add a new item");
         item.add(dropAddItem);
         dropAddItem.addActionListener(new AddItemListener());
         item.addSeparator();
         JMenuItem dropSearch = new JMenuItem("Search", new ImageIcon("src/image/Search-icon2.png"));
         dropSearch.setMnemonic('f');
         dropSearch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, Event.CTRL_MASK));
+        dropSearch.setToolTipText("Search for an item");
         item.add(dropSearch);
         JMenuItem dropSearchFirst = new JMenuItem("First Item", new ImageIcon("src/image/firstItem1.png"));
         dropSearchFirst.setMnemonic('1');
         dropSearchFirst.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, Event.CTRL_MASK));
+        dropSearchFirst.setToolTipText("Select first item");
         item.add(dropSearchFirst);
         dropSearchFirst.addActionListener(new butSelFirstListener());
         JMenuItem dropSearchLast = new JMenuItem("Last Item", new ImageIcon("src/image/lastItem1.png"));
         dropSearchLast.setMnemonic('l');
         dropSearchLast.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
+        dropSearchLast.setToolTipText("Select last item");
         item.add(dropSearchLast);
         butSelLast.addActionListener(new ButSelLastListener());
         item.addSeparator();
@@ -249,72 +258,86 @@ public class Main extends JFrame {
         JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon("src/image/blueRefresh1.png"));
         dropSelPrice.setMnemonic('p');
         dropSelPrice.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, Event.CTRL_MASK));
+        dropSelPrice.setToolTipText("Refresh selected item");
         select.add(dropSelPrice);
         dropSelPrice.addActionListener(new CheckSingleListener());
         JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon("src/image/URL1.png"));
         dropSelView.setMnemonic('w');
         dropSelView.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Event.CTRL_MASK));
+        dropSelView.setToolTipText("View URL of selected item");
         select.add(dropSelView);
         dropSelView.addActionListener(new viewPageListener());
         JMenuItem dropSelEdit = new JMenuItem("Edit", new ImageIcon("src/image/edit1.png"));
         dropSelEdit.setMnemonic('x');
         dropSelEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK));
+        dropSelEdit.setToolTipText("Edit selected item");
         select.add(dropSelEdit);
         JMenuItem dropSelRemove = new JMenuItem("Remove", new ImageIcon("src/image/delete1.png"));
         dropSelRemove.setMnemonic('d');
         dropSelRemove.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, Event.CTRL_MASK));
+        dropSelRemove.setToolTipText("Delete selected item");
         select.add(dropSelRemove);
         dropSelRemove.addActionListener(new deleteSelListener());
         select.addSeparator();
         JMenuItem dropSelCopyName = new JMenuItem("Copy Name");
         dropSelCopyName.setMnemonic('n');
         dropSelCopyName.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
+        dropSelCopyName.setToolTipText("Copy name of selected item");
         select.add(dropSelCopyName);
         JMenuItem dropSelCopyUrl = new JMenuItem("Copy URL");
         dropSelCopyUrl.setMnemonic('R');
         dropSelCopyUrl.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, Event.CTRL_MASK));
+        dropSelCopyName.setToolTipText("Copy URL of selected item");
         select.add(dropSelCopyUrl);
         JMenuItem dropSelCopyItem = new JMenuItem("Copy Item");
         dropSelCopyItem.setMnemonic('m');
         dropSelCopyItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, Event.CTRL_MASK));
+        dropSelCopyName.setToolTipText("Copy item selected");
         select.add(dropSelCopyItem);
         //radio buttons
         ButtonGroup radioGroup = new ButtonGroup();
         JRadioButtonMenuItem dropOldestAdded = new JRadioButtonMenuItem("Oldest Added");
         dropOldestAdded.setMnemonic('o');
         dropOldestAdded.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, Event.CTRL_MASK));
+        dropOldestAdded.setToolTipText("Sort by oldest");
         radioGroup.add(dropOldestAdded);
         sort.add(dropOldestAdded);
         JRadioButtonMenuItem dropNewestAdded = new JRadioButtonMenuItem("Newest Added");
         dropNewestAdded.setMnemonic('n');
         dropNewestAdded.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, Event.CTRL_MASK));
+        dropNewestAdded.setToolTipText("Sort newest");
         radioGroup.add(dropNewestAdded);
         sort.add(dropNewestAdded);
         sort.addSeparator();
         JRadioButtonMenuItem dropNameAsc = new JRadioButtonMenuItem("Name Ascending");
         dropNameAsc.setMnemonic('a');
         dropNameAsc.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, Event.CTRL_MASK));
+        dropNameAsc.setToolTipText("Sort ascending");
         radioGroup.add(dropNameAsc);
         sort.add(dropNameAsc);
         JRadioButtonMenuItem dropNameDesc = new JRadioButtonMenuItem("Name Descending");
         dropNameDesc.setMnemonic('d');
         dropNameDesc.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, Event.CTRL_MASK));
+        dropNameDesc.setToolTipText("Sort descending");
         radioGroup.add(dropNameDesc);
         sort.add(dropNameDesc);
         sort.addSeparator();
         JRadioButtonMenuItem dropPriceChange = new JRadioButtonMenuItem("Price Change (%)");
         dropPriceChange.setMnemonic('%');
         dropPriceChange.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, Event.CTRL_MASK));
+        dropPriceChange.setToolTipText("Sort by price change");
         radioGroup.add(dropPriceChange);
         sort.add(dropPriceChange);
         JRadioButtonMenuItem dropPriceHigh = new JRadioButtonMenuItem("Price High ($)");
         dropPriceHigh.setMnemonic('h');
         dropPriceHigh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, Event.CTRL_MASK));
+        dropPriceHigh.setToolTipText("Sort highest to lowest");
         radioGroup.add(dropPriceHigh);
         sort.add(dropPriceHigh);
         JRadioButtonMenuItem dropPriceLow = new JRadioButtonMenuItem("Price Low ($)");
         dropPriceLow.setMnemonic('l');
         dropPriceLow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F7, Event.CTRL_MASK));
+        dropPriceLow.setToolTipText("Sort lowest to highest");
         radioGroup.add(dropPriceLow);
         sort.add(dropPriceLow);
 
@@ -340,8 +363,15 @@ public class Main extends JFrame {
         }).start();
     }
 
-
-    //method to populate watchList
+    /**
+     *
+     * @param itemName
+     * @param URL
+     * @param maxPrice
+     * @param minPrice
+     * @param itemDate
+     * @return
+     */
     public Item createItem(String itemName, String URL, Double maxPrice, Double minPrice, String itemDate){
         Item testItem = new Item(itemName, URL, maxPrice,
         minPrice, itemDate);
@@ -360,11 +390,18 @@ public class Main extends JFrame {
         return list;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         new Main();
 
     }
-    //Get program info
+
+    /**
+     *
+     */
     private class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(null, "      " +
@@ -373,7 +410,9 @@ public class Main extends JFrame {
         }
     }
 
-    //add new item
+    /**
+     *
+     */
     private class AddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             JOptionPane testOption = new JOptionPane();
@@ -425,7 +464,10 @@ public class Main extends JFrame {
             }
         }
     }
-    //update price on selected item
+
+    /**
+     *
+     */
     private class CheckSingleListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             if(createJList.getSelectedIndex() > -1) {
@@ -439,6 +481,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class butSelFirstListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (defaultListModel.getSize() > -1) {
@@ -447,6 +492,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class ButSelLastListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (defaultListModel.getSize() > -1) {
@@ -455,6 +503,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class refreshListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             if(defaultListModel.getSize() > -1) {
@@ -471,6 +522,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class viewPageListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             if(createJList.getSelectedIndex() > -1) {
@@ -488,6 +542,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class deleteSelListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (createJList.getSelectedIndex() > -1) {
@@ -497,6 +554,9 @@ public class Main extends JFrame {
         }
     }
 
+    /**
+     *
+     */
     private class editListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if(createJList.getSelectedIndex() > -1) {
