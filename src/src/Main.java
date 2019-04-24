@@ -133,62 +133,62 @@ public class Main extends JFrame {
         JToolBar buttonBar = new JToolBar();
 
         JButton butRefresh = new JButton();
-        butRefresh.setIcon(new ImageIcon("src/image/refresh3.png"));
+        butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/refresh3.png")));
         butRefresh.setToolTipText("Refresh All");
         buttonBar.add(butRefresh);
         butRefresh.addActionListener(new refreshListener());
 
         JButton butAdd = new JButton();
-        butAdd.setIcon(new ImageIcon("src/image/add.jpg"));
+        butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
         butAdd.setToolTipText("Add a new item");
         buttonBar.add(butAdd);
         butAdd.addActionListener(new AddItemListener());
 
         JButton butSearch = new JButton();
-        butSearch.setIcon(new ImageIcon("src/image/search-icon1.png"));
+        butSearch.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/search-icon1.png")));
         butSearch.setToolTipText("Search for an item");
         buttonBar.add(butSearch);
 
         JButton butSelFirst = new JButton();
-        butSelFirst.setIcon(new ImageIcon("src/image/firstItem.png"));
+        butSelFirst.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/firstItem.png")));
         butSelFirst.setToolTipText("Select first item");
         butSelFirst.addActionListener(new butSelFirstListener());
         buttonBar.add(butSelFirst);
 
         JButton butSelLast = new JButton();
-        butSelLast.setIcon(new ImageIcon("src/image/lastItem.png"));
+        butSelLast.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/lastItem.png")));
         butSelLast.setToolTipText("Select last item");
         buttonBar.add(butSelLast);
         butSelLast.addActionListener(new ButSelLastListener());
         buttonBar.addSeparator();
 
         JButton butCheckSingle = new JButton();
-        butCheckSingle.setIcon(new ImageIcon("src/image/blueRefresh.png"));
+        butCheckSingle.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/blueRefresh.png")));
         butCheckSingle.setToolTipText("Update price for selected item");
         buttonBar.add(butCheckSingle);
         butCheckSingle.addActionListener(new CheckSingleListener());
 
         JButton butViewPage = new JButton();
-        butViewPage.setIcon(new ImageIcon("src/image/URL.png"));
+        butViewPage.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/URL.png")));
         butViewPage.setToolTipText("View URL of selected item");
         buttonBar.add(butViewPage);
         butViewPage.addActionListener(new viewPageListener());
 
         JButton butEdit = new JButton();
-        butEdit.setIcon(new ImageIcon("src/image/edit.png"));
+        butEdit.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/edit.png")));
         butEdit.setToolTipText("Edit selected item");
         buttonBar.add(butEdit);
         butEdit.addActionListener(new editListener());
 
         JButton butDeleteSel = new JButton();
-        butDeleteSel.setIcon(new ImageIcon("src/image/delete.png"));
+        butDeleteSel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/delete.png")));
         butDeleteSel.setToolTipText("Delete selected item");
         buttonBar.add(butDeleteSel);
         butDeleteSel.addActionListener(new deleteSelListener());
         buttonBar.addSeparator();
 
         JButton butInfo = new JButton();
-        butInfo.setIcon(new ImageIcon("src/image/questionMark.png"));
+        butInfo.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/questionMark.png")));
         butInfo.setToolTipText("Information for selected item");
         buttonBar.add(butInfo);
         butInfo.addActionListener(new AboutListener());
@@ -209,7 +209,7 @@ public class Main extends JFrame {
         dropBar.add(item);
         dropBar.add(sort);
         //app dropdown
-        JMenuItem about = new JMenuItem("About", new ImageIcon("src/image/questionMarkDrop.png"));
+        JMenuItem about = new JMenuItem("About", new ImageIcon(getClass().getClassLoader().getResource("image/questionMarkDrop.png")));
         about.setMnemonic('a');
         about.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, Event.CTRL_MASK));
         about.setToolTipText("Information for selected item");
@@ -222,31 +222,31 @@ public class Main extends JFrame {
         dropExit.setToolTipText("Exit the program");
         app.add(dropExit);
         //item drop down
-        JMenuItem dropCheckPrice = new JMenuItem("Check Price", new ImageIcon("src/image/refresh1.png"));
+        JMenuItem dropCheckPrice = new JMenuItem("Check Price", new ImageIcon(getClass().getClassLoader().getResource("image/refresh1.png")));
         dropCheckPrice.setMnemonic('c');
         dropCheckPrice.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, Event.CTRL_MASK));
         dropCheckPrice.setToolTipText("Refresh All");
         item.add(dropCheckPrice);
         dropCheckPrice.addActionListener(new refreshListener());
-        JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon("src/image/add1.png"));
+        JMenuItem dropAddItem = new JMenuItem("Add", new ImageIcon(getClass().getClassLoader().getResource("image/add1.png")));
         dropAddItem.setMnemonic('i');
         dropAddItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, Event.CTRL_MASK));
         dropAddItem.setToolTipText("Add a new item");
         item.add(dropAddItem);
         dropAddItem.addActionListener(new AddItemListener());
         item.addSeparator();
-        JMenuItem dropSearch = new JMenuItem("Search", new ImageIcon("src/image/Search-icon2.png"));
+        JMenuItem dropSearch = new JMenuItem("Search", new ImageIcon(getClass().getClassLoader().getResource("image/Search-icon2.png")));
         dropSearch.setMnemonic('f');
         dropSearch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, Event.CTRL_MASK));
         dropSearch.setToolTipText("Search for an item");
         item.add(dropSearch);
-        JMenuItem dropSearchFirst = new JMenuItem("First Item", new ImageIcon("src/image/firstItem1.png"));
+        JMenuItem dropSearchFirst = new JMenuItem("First Item", new ImageIcon(getClass().getClassLoader().getResource("image/firstItem1.png")));
         dropSearchFirst.setMnemonic('1');
         dropSearchFirst.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, Event.CTRL_MASK));
         dropSearchFirst.setToolTipText("Select first item");
         item.add(dropSearchFirst);
         dropSearchFirst.addActionListener(new butSelFirstListener());
-        JMenuItem dropSearchLast = new JMenuItem("Last Item", new ImageIcon("src/image/lastItem1.png"));
+        JMenuItem dropSearchLast = new JMenuItem("Last Item", new ImageIcon(getClass().getClassLoader().getResource("image/lastItem1.png")));
         dropSearchLast.setMnemonic('l');
         dropSearchLast.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
         dropSearchLast.setToolTipText("Select last item");
@@ -255,24 +255,24 @@ public class Main extends JFrame {
         item.addSeparator();
         //select drop down
         item.add(select);
-        JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon("src/image/blueRefresh1.png"));
+        JMenuItem dropSelPrice = new JMenuItem("Price", new ImageIcon(getClass().getClassLoader().getResource("image/blueRefresh1.png")));
         dropSelPrice.setMnemonic('p');
         dropSelPrice.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, Event.CTRL_MASK));
         dropSelPrice.setToolTipText("Refresh selected item");
         select.add(dropSelPrice);
         dropSelPrice.addActionListener(new CheckSingleListener());
-        JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon("src/image/URL1.png"));
+        JMenuItem dropSelView = new JMenuItem("View Webpage", new ImageIcon(getClass().getClassLoader().getResource("image/URL1.png")));
         dropSelView.setMnemonic('w');
         dropSelView.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, Event.CTRL_MASK));
         dropSelView.setToolTipText("View URL of selected item");
         select.add(dropSelView);
         dropSelView.addActionListener(new viewPageListener());
-        JMenuItem dropSelEdit = new JMenuItem("Edit", new ImageIcon("src/image/edit1.png"));
+        JMenuItem dropSelEdit = new JMenuItem("Edit", new ImageIcon(getClass().getClassLoader().getResource("image/edit1.png")));
         dropSelEdit.setMnemonic('x');
         dropSelEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, Event.CTRL_MASK));
         dropSelEdit.setToolTipText("Edit selected item");
         select.add(dropSelEdit);
-        JMenuItem dropSelRemove = new JMenuItem("Remove", new ImageIcon("src/image/delete1.png"));
+        JMenuItem dropSelRemove = new JMenuItem("Remove", new ImageIcon(getClass().getClassLoader().getResource("image/delete1.png")));
         dropSelRemove.setMnemonic('d');
         dropSelRemove.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, Event.CTRL_MASK));
         dropSelRemove.setToolTipText("Delete selected item");
