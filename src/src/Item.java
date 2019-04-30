@@ -106,5 +106,4 @@ public class Item {
         return (new BigDecimal(((itemPrice - previousPrice)/ previousPrice) * 100)
                 .setScale(2, RoundingMode.CEILING).doubleValue());
     }
-
 }
