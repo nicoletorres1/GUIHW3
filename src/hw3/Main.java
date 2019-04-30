@@ -1,16 +1,11 @@
-package src;
-
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
+package hw3;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URI;
-import java.util.ListIterator;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeListener;
 
 /**
  * A dialog for tracking the price of an item.
