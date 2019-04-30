@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package src;
+=======
+package hw3;
+>>>>>>> origin/master
 
 import java.util.ArrayList;
 import java.util.List;
