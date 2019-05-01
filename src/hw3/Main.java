@@ -127,17 +127,21 @@ public class Main extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
         JToolBar buttonBar = new JToolBar();
 
+
+
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/refresh3.png")));
         butRefresh.setToolTipText("Refresh All");
         buttonBar.add(butRefresh);
         butRefresh.addActionListener(new refreshListener());
 
-        JButton butAdd = new JButton();
-        butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
-        butAdd.setToolTipText("Add a new item");
+        JButton butAdd = createAddButton();
+        //JButton butAdd = new JButton();
+//        butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
+//        butAdd.setToolTipText("Add a new item");
         buttonBar.add(butAdd);
-        butAdd.addActionListener(new AddItemListener());
+        //butAdd.addActionListener(new AddItemListener());
+//        butAdd.addActionListener(this::addItem);
 
         JButton butSearch = new JButton();
         butSearch.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/search-icon1.png")));
@@ -340,6 +344,14 @@ public class Main extends JFrame {
         return panel;
     }
 
+    protected JButton createAddButton() {
+        JButton butAdd = new JButton();
+        butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
+        butAdd.setToolTipText("Add a new item");
+        butAdd.addActionListener(this::addItem);
+        return butAdd;
+    }
+
 
     /**
      * Show briefly the given string in the message bar.
@@ -391,7 +403,6 @@ public class Main extends JFrame {
      */
     public static void main(String[] args) {
         new Main();
-
     }
 
     /**
@@ -405,10 +416,59 @@ public class Main extends JFrame {
         }
     }
 
+    public void addItem(ActionEvent e){
+        JOptionPane testOption = new JOptionPane();
+
+        JTextField nameField = new JTextField(10);
+        JTextField urlField = new JTextField(10);
+        JTextField priceField = new JTextField(10);
+        JTextField dateField = new JTextField(10);
+
+        JPanel namePanel = new JPanel();
+        JPanel URLPanel = new JPanel();
+        JPanel pricePanel = new JPanel();
+        JPanel datePanel = new JPanel();
+        JPanel outer = new JPanel();
+
+        outer.setLayout(new BoxLayout(outer, BoxLayout.Y_AXIS));
+
+        namePanel.add(new JLabel("Name:\t"));
+        namePanel.add(nameField);
+        namePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        URLPanel.add(new JLabel("URL:\t"), urlField);
+        URLPanel.add(urlField);
+        URLPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        pricePanel.add(new JLabel("Price(Numbers only):\t"));
+        pricePanel.add(priceField);
+        pricePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        datePanel.add(new JLabel("Date Added:\t"));
+        datePanel.add(dateField);
+        datePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        outer.add(namePanel);
+        outer.add(URLPanel);
+        outer.add(pricePanel);
+        outer.add(datePanel);
+
+        int button = testOption.showConfirmDialog(null, outer, "Add Item", JOptionPane.OK_CANCEL_OPTION);
+
+        String name = nameField.getText();
+        String URL = urlField.getText();
+        double price =  Double.parseDouble(priceField.getText());
+        String date = dateField.getText();
+        if(button == 0) {
+            Item addItem = new Item(name, URL, price, 0, date);
+
+            defaultListModel.addElement(addItem);
+        }
+    }
     /**
      *
      */
-    private class AddItemListener implements ActionListener {
+    public class AddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             JOptionPane testOption = new JOptionPane();
 
