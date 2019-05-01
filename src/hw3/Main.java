@@ -33,7 +33,7 @@ public class Main extends JFrame {
     /**
      *
      */
-    private DefaultListModel defaultListModel;
+    protected DefaultListModel defaultListModel;
 
     /** Message bar to display various messages. */
     private JLabel msgBar = new JLabel(" ");
@@ -136,12 +136,7 @@ public class Main extends JFrame {
         butRefresh.addActionListener(new refreshListener());
 
         JButton butAdd = createAddButton();
-        //JButton butAdd = new JButton();
-//        butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
-//        butAdd.setToolTipText("Add a new item");
         buttonBar.add(butAdd);
-        //butAdd.addActionListener(new AddItemListener());
-//        butAdd.addActionListener(this::addItem);
 
         JButton butSearch = new JButton();
         butSearch.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/search-icon1.png")));
@@ -389,7 +384,7 @@ public class Main extends JFrame {
     /**
      * @return list
      */
-    public DefaultListModel createListModel(){
+    protected DefaultListModel createListModel(){
         DefaultListModel list = new DefaultListModel<>();
         watchList.getHolder().forEach((iter) -> {
             list.addElement(iter);
