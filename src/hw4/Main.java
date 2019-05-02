@@ -24,6 +24,7 @@ public class Main extends hw3.Main {
     protected class AddItemListener extends hw3.Main.AddItemListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            WebPriceFinder webPrice = new WebPriceFinder();
             JOptionPane testOption = new JOptionPane();
 
             JTextField nameField = new JTextField(10);
@@ -64,10 +65,11 @@ public class Main extends hw3.Main {
 
             String name = nameField.getText();
             String URL = urlField.getText();
-            double price =  Double.parseDouble(priceField.getText());
             String date = dateField.getText();
             if(button == 0) {
-                Item addItem = new Item(name, URL, price, 0, date);
+                Item addItem = new Item(name, URL, 0, 0, date);
+                double price = webPrice.getRandomPrice(addItem);
+                addItem.setItemPrice(price);
 
                 defaultListModel.addElement(addItem);
             }

@@ -21,6 +21,7 @@ public class Item {
     private double itemChange;// = change();
     private String itemDate;// = "08/25/2018";
     private double previousPrice;
+    PriceFinder randPrice = new PriceFinder();
 
     public Item(){
     }
@@ -30,7 +31,7 @@ public class Item {
         this.URL = URL;
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
-        this.itemPrice = PriceFinder.getRandomPrice();
+        //this.itemPrice = randPrice.getRandomPrice();
         this.itemChange = 0;
         this.itemDate = itemDate;
     }
