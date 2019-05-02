@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 public class WebPriceFinder extends PriceFinder {
+    double actPrice;
     @Override
     protected double getRandomPrice(Item itemPrice) {
         HttpURLConnection con = null;
@@ -28,13 +31,21 @@ public class WebPriceFinder extends PriceFinder {
             BufferedReader in = new BufferedReader(reader);
             String line;
             while ((line = in.readLine()) != null) {
-
+                //System.out.println(line);
+                if (line.contains("attach-baseProductBuyingPrice")) {
+                    Pattern pattern = Pattern.compile("\\$(\\d+\\.\\d{2})");
+                    Matcher matcher = pattern.matcher(line);
+                    while (matcher.find()) {
+                        String price = matcher.group(1);
+                        actPrice = Double.parseDouble(price);
+                    }
+                }
             }
         } catch (IOException e) { e.printStackTrace();
         } finally {
             if (con != null) {  con.disconnect(); }
         }
 
-        return super.getRandomPrice(itemPrice);
+        return actPrice;
     }
 }

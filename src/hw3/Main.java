@@ -92,13 +92,13 @@ public class Main extends JFrame {
     /** Configure UI. */
     private void configureUI() {
         setLayout(new BorderLayout());
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 
         defaultListModel = createListModel();
         createJList = new JList<>(defaultListModel);
