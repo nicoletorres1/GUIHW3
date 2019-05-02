@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.print.PrinterException;
 import java.net.URI;
 import javax.swing.*;
 
@@ -23,6 +24,7 @@ public class Main extends JFrame {
     private double itemChange;
     private String itemDate = "08/25/2018";
     private JList createJList;
+    PriceFinder randPrice = new PriceFinder();
 
 
     /** Default dimension of the dialog. */
@@ -64,7 +66,7 @@ public class Main extends JFrame {
         //-- WRITE YOUR CODE HERE!
         //--
         itemView.getItem().setPreviousPrice(itemView.getItem().getItemPrice());
-        itemView.getItem().setItemPrice(itemView.getItem().getRandomPrice());
+        itemView.getItem().setItemPrice(PriceFinder.getRandomPrice());
         itemView.getItem().setItemChange();
         super.repaint();
         showMessage("Refresh clicked!");
@@ -524,7 +526,7 @@ public class Main extends JFrame {
                 Item refreshItem;
                 refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
                 refreshItem.setPreviousPrice(refreshItem.getItemPrice());
-                refreshItem.setItemPrice(refreshItem.getRandomPrice());
+                refreshItem.setItemPrice(PriceFinder.getRandomPrice());
                 refreshItem.setItemChange();
                 repaint();
             }
@@ -564,7 +566,7 @@ public class Main extends JFrame {
                     createJList.setSelectedIndex(i);
                     refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
                     refreshItem.setPreviousPrice(refreshItem.getItemPrice());
-                    refreshItem.setItemPrice(refreshItem.getRandomPrice());
+                    refreshItem.setItemPrice(PriceFinder.getRandomPrice());
                     refreshItem.setItemChange();
                     repaint();
                 }

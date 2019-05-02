@@ -30,7 +30,7 @@ public class Item {
         this.URL = URL;
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
-        this.itemPrice = getRandomPrice();
+        this.itemPrice = PriceFinder.getRandomPrice();
         this.itemChange = 0;
         this.itemDate = itemDate;
     }
@@ -94,11 +94,11 @@ public class Item {
 
     public void setPreviousPrice(double prevPrice){ this.previousPrice = prevPrice; }
 
-    public double getRandomPrice(){
-        Random ran = new Random();
-        return (new BigDecimal(ran.doubles(minPrice, (maxPrice + 1)).findFirst().getAsDouble())
-                .setScale(2,RoundingMode.CEILING).doubleValue());
-    }
+//    public double getRandomPrice(){
+//        Random ran = new Random();
+//        return (new BigDecimal(ran.doubles(minPrice, (maxPrice + 1)).findFirst().getAsDouble())
+//                .setScale(2,RoundingMode.CEILING).doubleValue());
+//    }
 
 
     public double change(){
