@@ -15,7 +15,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Main extends JFrame {
 
-    private WatchList watchList = new WatchList();
+
     private String itemName = "LED Monitor";
     private String URL = "http://www.bestbuy.com/site/samsun-ue90-series-28-led-4k-uhd-moniotr-black/5484022.p?skuId=5484022";
     private double maxPrice = 369.99;
@@ -23,6 +23,7 @@ public class Main extends JFrame {
     private double itemChange;
     private String itemDate = "08/25/2018";
     private JList createJList;
+    private JsonManager manager = new JsonManager();
 
 
     /** Default dimension of the dialog. */
@@ -63,6 +64,7 @@ public class Main extends JFrame {
         //--
         //-- WRITE YOUR CODE HERE!
         //--
+
         itemView.getItem().setPreviousPrice(itemView.getItem().getItemPrice());
         itemView.getItem().setItemPrice(itemView.getItem().getRandomPrice());
         itemView.getItem().setItemChange();
@@ -90,13 +92,13 @@ public class Main extends JFrame {
     /** Configure UI. */
     private void configureUI() {
         setLayout(new BorderLayout());
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 
         defaultListModel = createListModel();
         createJList = new JList<>(defaultListModel);
@@ -386,7 +388,7 @@ public class Main extends JFrame {
      */
     protected DefaultListModel createListModel(){
         DefaultListModel list = new DefaultListModel<>();
-        watchList.getHolder().forEach((iter) -> {
+        manager.getHolder().forEach((iter) -> {
             list.addElement(iter);
         });
         return list;
@@ -558,6 +560,9 @@ public class Main extends JFrame {
      */
     private class refreshListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
+
+            manager.writeJSON(manager.createJSON());
+
             if(defaultListModel.getSize() > -1) {
                 for(int i = 0; i < defaultListModel.getSize(); i++){
                     Item refreshItem;
