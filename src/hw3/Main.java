@@ -66,7 +66,7 @@ public class Main extends JFrame {
         //-- WRITE YOUR CODE HERE!
         //--
         itemView.getItem().setPreviousPrice(itemView.getItem().getItemPrice());
-        itemView.getItem().setItemPrice(PriceFinder.getRandomPrice());
+        itemView.getItem().setItemPrice(randPrice.getRandomPrice(itemView.getItem()));
         itemView.getItem().setItemChange();
         super.repaint();
         showMessage("Refresh clicked!");
@@ -526,7 +526,7 @@ public class Main extends JFrame {
                 Item refreshItem;
                 refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
                 refreshItem.setPreviousPrice(refreshItem.getItemPrice());
-                refreshItem.setItemPrice(PriceFinder.getRandomPrice());
+                refreshItem.setItemPrice(randPrice.getRandomPrice(refreshItem));
                 refreshItem.setItemChange();
                 repaint();
             }
@@ -566,7 +566,7 @@ public class Main extends JFrame {
                     createJList.setSelectedIndex(i);
                     refreshItem = (Item) defaultListModel.get(createJList.getSelectedIndex());
                     refreshItem.setPreviousPrice(refreshItem.getItemPrice());
-                    refreshItem.setItemPrice(PriceFinder.getRandomPrice());
+                    refreshItem.setItemPrice(randPrice.getRandomPrice(refreshItem));
                     refreshItem.setItemChange();
                     repaint();
                 }
