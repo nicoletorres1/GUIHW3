@@ -85,6 +85,11 @@ public class Item {
         this.itemChange = change();
     }
 
+    //overloading methods
+    public void setItemChange(double change ) {
+        this.itemChange = change;
+    }
+
     public String getItemDate() {
         return itemDate;
     }

@@ -29,6 +29,4 @@ public class WatchList {
         this.getHolder().remove(item);
     }
 
-
-
 }
