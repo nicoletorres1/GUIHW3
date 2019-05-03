@@ -104,6 +104,13 @@ public class Main extends JFrame {
         manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
         manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
         manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 
         defaultListModel = createListModel();
         createJList = new JList<>(defaultListModel);
@@ -581,9 +588,6 @@ public class Main extends JFrame {
      */
     private class refreshListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
-
-            manager.writeJSON(manager.createJSON());
-
             if(defaultListModel.getSize() > -1) {
                 for(int i = 0; i < defaultListModel.getSize(); i++){
                     Item refreshItem;
