@@ -40,6 +40,12 @@ public class WebPriceFinder extends PriceFinder {
                         actPrice = Double.parseDouble(price);
                     }
                 }
+                if (line.contains("aria-label")) {
+                    actPrice = getWalmartPrice(line);
+                    if(actPrice > 0.0) {
+                        return actPrice;
+                    }
+                }
             }
         } catch (IOException e) { e.printStackTrace();
         } finally {
@@ -47,5 +53,18 @@ public class WebPriceFinder extends PriceFinder {
         }
 
         return actPrice;
+    }
+
+    public double getWalmartPrice(String line){
+        Pattern pattern = Pattern.compile("\\$(\\d+\\.\\d{2})");
+        Matcher matcher = pattern.matcher(line);
+        while (matcher.find()) {
+            String price = matcher.group(1);
+            double tempPrice = Double.parseDouble(price);
+            if(tempPrice > 0.0) {
+                return tempPrice;
+            }
+        }
+        return 0;
     }
 }
