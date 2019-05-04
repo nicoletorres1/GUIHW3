@@ -32,16 +32,26 @@ public class WebPriceFinder extends PriceFinder {
             String line;
             while ((line = in.readLine()) != null) {
                 //System.out.println(line);
-                if (line.contains("attach-baseProductBuyingPrice")) {
-                    Pattern pattern = Pattern.compile("\\$(\\d+\\.\\d{2})");
+                //actPrice = getPrice(line);
+                //System.out.println(actPrice);
+                //etsy price
+                if(line.contains("product:price:amount")){
+                    Pattern pattern = Pattern.compile("(\\d+\\.\\d{2})");
                     Matcher matcher = pattern.matcher(line);
                     while (matcher.find()) {
                         String price = matcher.group(1);
-                        actPrice = Double.parseDouble(price);
+                        double tempPrice = Double.parseDouble(price);
+                        return tempPrice;
                     }
                 }
+                //Amazon price
+                if (line.contains("attach-baseProductBuyingPrice")) {
+                    actPrice = getPrice(line);
+                    return actPrice;
+                }
+                //Walmart price
                 if (line.contains("aria-label")) {
-                    actPrice = getWalmartPrice(line);
+                    actPrice = getPrice(line);
                     if(actPrice > 0.0) {
                         return actPrice;
                     }
@@ -55,15 +65,14 @@ public class WebPriceFinder extends PriceFinder {
         return actPrice;
     }
 
-    public double getWalmartPrice(String line){
+    public double getPrice(String line){
         Pattern pattern = Pattern.compile("\\$(\\d+\\.\\d{2})");
         Matcher matcher = pattern.matcher(line);
         while (matcher.find()) {
             String price = matcher.group(1);
             double tempPrice = Double.parseDouble(price);
-            if(tempPrice > 0.0) {
-                return tempPrice;
-            }
+            //System.out.println(tempPrice);
+            return tempPrice;
         }
         return 0;
     }
