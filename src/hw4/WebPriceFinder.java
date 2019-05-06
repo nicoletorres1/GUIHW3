@@ -13,6 +13,12 @@ import java.util.zip.GZIPInputStream;
 
 public class WebPriceFinder extends PriceFinder {
     double actPrice;
+
+    /**
+     * overrides the getrandomprie method from pricefinder and allows webscraping to get the actual price from the URL
+     * @param itemPrice
+     * @return
+     */
     @Override
     protected double getRandomPrice(Item itemPrice) {
         HttpURLConnection con = null;
@@ -31,7 +37,7 @@ public class WebPriceFinder extends PriceFinder {
             BufferedReader in = new BufferedReader(reader);
             String line;
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 //actPrice = getPrice(line);
                 //System.out.println(actPrice);
                 //etsy price
@@ -65,6 +71,11 @@ public class WebPriceFinder extends PriceFinder {
         return actPrice;
     }
 
+    /**
+     * separates the price based off a pattern that its given
+     * @param line
+     * @return
+     */
     public double getPrice(String line){
         Pattern pattern = Pattern.compile("\\$(\\d+\\.\\d{2})");
         Matcher matcher = pattern.matcher(line);

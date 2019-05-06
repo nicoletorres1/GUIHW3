@@ -9,14 +9,20 @@ import java.awt.event.ActionListener;
 
 public class Main extends hw3.Main {
 
-    //private JList createJList;
     WebPriceFinder randPrice = new WebPriceFinder();
 
+    /**
+     * Runs the subclass of hw3 main
+     * @param args
+     */
     public static void main(String[] args){
         new Main();
     }
 
-
+    /**
+     * Overides the hw3 createAddButton method and allows it to use the webpricefinder subclass
+     * @return
+     */
     @Override
     protected JButton createAddButton() {
         JButton butAdd = new JButton();
@@ -26,6 +32,10 @@ public class Main extends hw3.Main {
         return butAdd;
     }
 
+    /**
+     *Overides the hw3 createRefreshButton method and allows it to use the webpricefinder subclass
+     * @return
+     */
     @Override
     protected JButton createRefreshButton() {
         JButton butRefresh = new JButton();
@@ -35,6 +45,9 @@ public class Main extends hw3.Main {
         return butRefresh;
     }
 
+    /**
+     *Checks the new refreshbutton and allows for the webpricefinder subclass to be used
+     */
     private class refreshListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             if(defaultListModel.getSize() > -1) {
@@ -51,6 +64,9 @@ public class Main extends hw3.Main {
         }
     }
 
+    /**
+     * checks the new additemlistener and allows for the webpricefinder subclass to be used
+     */
     protected class AddItemListener extends hw3.Main.AddItemListener{
 
         @Override

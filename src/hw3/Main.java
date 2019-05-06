@@ -97,13 +97,13 @@ public class Main extends JFrame {
     /** Configure UI. */
     private void configureUI() {
         setLayout(new BorderLayout());
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
-        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+//        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
@@ -348,6 +348,10 @@ public class Main extends JFrame {
         return panel;
     }
 
+    /**
+     * creates the add button and allows it to be overriden in subclass
+     * @return
+     */
     protected JButton createAddButton() {
         JButton butAdd = new JButton();
         butAdd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/add.jpg")));
@@ -356,6 +360,10 @@ public class Main extends JFrame {
         return butAdd;
     }
 
+    /**
+     * creates the refresh button and allows it to be overriden in the subclass
+     * @return
+     */
     protected JButton createRefreshButton() {
         JButton butRefresh = new JButton();
         butRefresh.setIcon(new ImageIcon(getClass().getClassLoader().getResource("image/refresh3.png")));
@@ -434,7 +442,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *checks if the about button was clicked and has a popout for the about panel
      */
     private class AboutListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -445,7 +453,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *checks if the add item button was clicked and creates an item if so
      */
     protected class AddItemListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -500,7 +508,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *checks if one the selected item refresh is clicked and gets the new price and calculates the change
      */
     private class CheckSingleListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -516,7 +524,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *Moves the selection to the first item
      */
     private class butSelFirstListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -527,7 +535,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *Moves the selection to the last item
      */
     private class ButSelLastListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -538,7 +546,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *Refreshes all items in the list
      */
     protected class refreshListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -557,7 +565,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *when clicked opens the URL
      */
     private class viewPageListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
@@ -577,7 +585,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *Deletes the item selected
      */
     private class deleteSelListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -589,7 +597,7 @@ public class Main extends JFrame {
     }
 
     /**
-     *
+     *Allows the user to edit the item
      */
     private class editListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
