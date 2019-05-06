@@ -11,6 +11,7 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 
+
 public class Item {
 
     private String itemName;// = "LED Monitor";
@@ -83,6 +84,11 @@ public class Item {
 
     public void setItemChange() {
         this.itemChange = change();
+    }
+
+    //overloading methods
+    public void setItemChange(double change ) {
+        this.itemChange = change;
     }
 
     public String getItemDate() {

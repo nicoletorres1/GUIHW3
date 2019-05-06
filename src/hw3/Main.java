@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.print.PrinterException;
+import java.io.IOException;
 import java.net.URI;
 import javax.swing.*;
+import java.io.FileNotFoundException;
 
 /**
  * A dialog for tracking the price of an item.
@@ -24,6 +26,7 @@ public class Main extends JFrame {
     private double itemChange;
     private String itemDate = "08/25/2018";
     protected JList createJList;
+    private JsonManager manager = new JsonManager();
     PriceFinder randPrice = new PriceFinder();
 
 
@@ -65,7 +68,9 @@ public class Main extends JFrame {
         //--
         //-- WRITE YOUR CODE HERE!
         //--
+
         itemView.getItem().setPreviousPrice(itemView.getItem().getItemPrice());
+        //itemView.getItem().setItemPrice(randPrice.getRandomPrice());
         itemView.getItem().setItemPrice(randPrice.getRandomPrice(itemView.getItem()));
         itemView.getItem().setItemChange();
         super.repaint();
@@ -92,6 +97,13 @@ public class Main extends JFrame {
     /** Configure UI. */
     private void configureUI() {
         setLayout(new BorderLayout());
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
+        manager.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
 //        watchList.add(createItem(itemName,URL,maxPrice,minPrice,itemDate));
@@ -389,9 +401,25 @@ public class Main extends JFrame {
     /**
      * @return list
      */
-    protected DefaultListModel createListModel(){
+    protected DefaultListModel createListModel() {
+
         DefaultListModel list = new DefaultListModel<>();
-        watchList.getHolder().forEach((iter) -> {
+
+        try {
+           manager.readJSON("src/file.txt");
+
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("The file is not found in the specified location");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+
+
+        manager.getHolder().forEach((iter) -> {
             list.addElement(iter);
         });
         return list;
