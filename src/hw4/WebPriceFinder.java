@@ -31,7 +31,7 @@ public class WebPriceFinder extends PriceFinder {
             BufferedReader in = new BufferedReader(reader);
             String line;
             while ((line = in.readLine()) != null) {
-                //System.out.println(line);
+                System.out.println(line);
                 //actPrice = getPrice(line);
                 //System.out.println(actPrice);
                 //etsy price
